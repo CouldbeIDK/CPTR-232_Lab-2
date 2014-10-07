@@ -5,7 +5,7 @@ int main() {
 	int sorted[10000];
 	int i, j, k, key, slength;
 	i=0;
-	while ((scanf("%d", &j) >= 0) && (i<64)){
+	while ((scanf("%d", &j) >= 0) && (i<10000)){
 		sorted[i++] = j;
 	}
 	slength = i;
