@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <math.h>
 
+/*
+
+The Loop Invariant is that the top number of any
+half of the array is always the lowest number in
+the list. Even if the top is taken off.
+
+*/
 void MERGE(int *A,int p,int q,int r){
 	int na = q - p + 1;
 	int nb = r - q;
@@ -18,10 +25,10 @@ void MERGE(int *A,int p,int q,int r){
 	for (k = p; k <= r ; k++){
 		if ((L[i] <= R[j]) && (i < na)){
 			A[k] = L[i];
-			i++;
-		}else{
+			i = i + 1;
+		}else if(j < nb){
 			A[k] = R[j];
-			j++;
+			j = j + 1;
 		}
 	}
 }
@@ -44,7 +51,7 @@ int main() {
 	}
 	slength = i;
 	
-	MERGE(sorted, 0, slength / 2, slength);
+	MERGESORT(sorted, 0, slength-1);
 	
 	for (k=0 ; k < slength ; k++){
 		printf("%d\n", sorted[k]);
