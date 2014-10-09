@@ -30,5 +30,5 @@ int main() {
 	for (k=0 ; k < slength ; k++){
 		printf("%d\n", sorted[k]);
 	}
-	printf("It took this algorithm %ld clocks to finish", start_t - end_t);
+	printf("It took this algorithm %ld clocks to finish", end_t - start_t);
 }

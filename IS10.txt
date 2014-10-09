@@ -1,0 +1,11 @@
+0
+5
+6
+7
+62
+62
+77
+79
+84
+88
+It took this algorithm 0 clocks to finish
