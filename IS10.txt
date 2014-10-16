@@ -3,9 +3,9 @@
 6
 7
 62
-62
+63
 77
 79
 84
 88
-It took this algorithm 0 clocks to finish
+It took this algorithm 3 microseconds to finish

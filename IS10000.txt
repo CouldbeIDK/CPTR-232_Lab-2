@@ -9998,4 +9998,4 @@
 100
 100
 100
-It took this algorithm 80000 clocks to finish
+It took this algorithm 79712 microseconds to finish

@@ -98,4 +98,4 @@
 99
 100
 100
-This algorithm took 0 clocks to finish
+Time Spent: 41 Microseconds

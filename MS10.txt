@@ -8,4 +8,4 @@
 79
 84
 88
-It took this algorithm 0 clocks to finish
+Time Spent: -1279902584 Microseconds

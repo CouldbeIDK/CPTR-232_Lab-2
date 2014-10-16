@@ -1,22 +1,26 @@
 #include <stdlib.h>
 #include <stdio.h>
-#include <time.h>
+#include <sys/time.h>
+#include <unistd.h>
+
+//time segments taken from http://stackoverflow.com/questions/9871071/why-c-clock-returns-0
 
 // The Loop invariant is that you always know that 
 // everything before the last sorted int is in order
 // starting with the very first index.
 
 int main() {
-	clock_t start_t, end_t;
+	struct timeval start, end;
+	long mtime, secs, usecs;
 	
-	int sorted[10000];
+	int sorted[100000];
 	int i, j, k, key, slength;
 	i=0;
-	while ((scanf("%d", &j) >= 0) && (i<10000)){
+	while ((scanf("%d", &j) >= 0) && (i<100000)){
 		sorted[i++] = j;
 	}
 	slength = i;
-	start_t = clock();
+	gettimeofday(&start, NULL);
 	for (j=1 ; j < slength ; j++){
 		key = sorted[j];
 		i = j - 1;
@@ -26,9 +30,13 @@ int main() {
 		}
 		sorted[i+1] = key;
 	}
-	end_t = clock();
+	gettimeofday(&end, NULL);
 	for (k=0 ; k < slength ; k++){
 		printf("%d\n", sorted[k]);
 	}
-	printf("It took this algorithm %ld clocks to finish", end_t - start_t);
+	
+	secs  = end.tv_sec  - start.tv_sec;
+	usecs = end.tv_usec - start.tv_usec;
+	mtime = ((secs) + usecs) + 0.5;
+	printf("Time Spent: %ld Microseconds\n", mtime);
 }

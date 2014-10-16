@@ -1,19 +1,22 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <sys/time.h>
+#include <unistd.h>
 
 //the Loop invariant is that everything before index
 // i is sorted.
 
 int main() {
-	clock_t start_t, end_t;
-	int sorted[10000];
+	struct timeval start, end;
+	long mtime, secs, usecs;
+	int sorted[100000];
 	int i, j, k, key, slength;
 	i=0;
-	while ((scanf("%d", &j) >= 0) && (i<10000)){
+	while ((scanf("%d", &j) >= 0) && (i<100000)){
 		sorted[i++] = j;
 	}
 	slength = i;
-	start_t = clock();
+	gettimeofday(&start, NULL);
 	for(i=0; i <= slength - 2; i++){
 		for(j=(slength-1); j >= i+1; j--){
 			if (sorted[j] < sorted[j-1]){
@@ -23,9 +26,12 @@ int main() {
 			}
 		}
 	}
-	end_t = clock();
+	gettimeofday(&end, NULL);
 	for (k=0 ; k < slength ; k++){
 		printf("%d\n", sorted[k]);
 	}
-	printf("This algorithm took %ld clocks to finish", end_t - start_t);
+	secs  = end.tv_sec  - start.tv_sec;
+	usecs = end.tv_usec - start.tv_usec;
+	mtime = ((secs) + usecs) + 0.5;
+	printf("Time Spent: %ld Microseconds\n", mtime);
 }
