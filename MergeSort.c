@@ -60,7 +60,7 @@ void MERGESORT(int *A, int p, int r){
 int main() {
 	
 	struct timeval start, end;
-	long mtime, secs, usecs;
+	long secs, usecs;
 	
 	int sorted[100000];
 	int i, j, k, key, slength;
@@ -72,13 +72,9 @@ int main() {
 	
 	gettimeofday(&start,NULL);
 	MERGESORT(sorted, 0, slength-1);
-	gettimeofday(&start,NULL);
+	gettimeofday(&end,NULL);
 	
-	for (k=0 ; k < slength ; k++){
-		printf("%d\n", sorted[k]);
-	}
 	secs  = end.tv_sec  - start.tv_sec;
 	usecs = end.tv_usec - start.tv_usec;
-	mtime = ((secs) + usecs) + 0.5;
-	printf("Time Spent: %ld Microseconds\n", mtime);
+	printf("Time Spent: %d.%06d Seconds\n", (int)secs, (int)usecs);
 }

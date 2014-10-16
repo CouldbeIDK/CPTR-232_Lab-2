@@ -27,11 +27,8 @@ int main() {
 		}
 	}
 	gettimeofday(&end, NULL);
-	for (k=0 ; k < slength ; k++){
-		printf("%d\n", sorted[k]);
-	}
+	
 	secs  = end.tv_sec  - start.tv_sec;
 	usecs = end.tv_usec - start.tv_usec;
-	mtime = ((secs) + usecs) + 0.5;
-	printf("Time Spent: %ld Microseconds\n", mtime);
+	printf("Time Spent: %d.%06d Microseconds\n", (int)secs, (int)usecs);
 }
